@@ -8,7 +8,7 @@ A fullstack CRUD with react on front and php/laravel on backend
 
 ### Dependencies
 
-* Installing all dependecies first time the project runs (bootstrap, react boostrap, react hook form, react hot toast,axios, uniqId...)
+Installing all dependecies first time the project runs (bootstrap, react boostrap, react hook form, react hot toast,axios, uniqId...)
 
 ```
 cd client
