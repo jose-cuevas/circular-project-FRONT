@@ -4,10 +4,19 @@ import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
-import { createPurchase } from "../api/api";
+import { modifyPurchase } from "../api/api";
 
-const ModalNewPurchase = () => {
-  const createPurchaseAlert = () => toast.success("Purchase created!");
+const ModalModifyPurchase = ({
+  id,
+  country,
+  purchase_date,
+  patient_id,
+  medicine,
+  quantity,
+  price,
+}) => {  
+
+  const modifyPurchaseAlert = () => toast.success("Purchase edited!");
 
   // Modal states
   const [show, setShow] = useState(false);
@@ -17,20 +26,21 @@ const ModalNewPurchase = () => {
   // Form states
   const {
     register,
-    handleSubmit
+    handleSubmit    
   } = useForm();
 
   const onSubmit = (data) => {
-    const dataToSend = {
+    const dataFormat = {
       country: data.country,
       medicine: data.medicine,
+      patient_id: patient_id,
       quantity: Number(data.quantity),
       purchase_date: data.purchase_date,
       price: Number(data.price),
     };
-    createPurchase(dataToSend);
-    createPurchaseAlert();
 
+    modifyPurchase(id, dataFormat);
+    modifyPurchaseAlert();
     setTimeout(function () {
       window.location.reload();
     }, 3000);
@@ -38,18 +48,14 @@ const ModalNewPurchase = () => {
 
   return (
     <>
-      <Toaster />
-      <div className="d-flex justify-content-center">
-        <Button variant="outline-primary" onClick={handleShow} className="mb-4 p-2 w-25">
-          New Purchase
-        </Button>
-      </div>
+      <Button variant="outline-primary" onClick={handleShow}>
+        Edit
+      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Insert new purchase</Modal.Title>
+          <Modal.Title>Edit Purchase</Modal.Title>
         </Modal.Header>
-
         <Modal.Body className="m-auto">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2">
@@ -59,9 +65,10 @@ const ModalNewPurchase = () => {
                 type="text"
                 name="country"
                 id="country"
+                placeholder={country}
                 required
                 pattern="[a-zA-Z ]{2,}"
-                {...register("country", { required: true })}
+                {...register("country")}
               />
             </div>
             <div className="mb-2">
@@ -71,9 +78,10 @@ const ModalNewPurchase = () => {
                 type="text"
                 name="medicine"
                 id="medicine"
+                placeholder={medicine}
                 required
                 pattern="[a-zA-Z ]{2,}"
-                {...register("medicine", { required: true })}
+                {...register("medicine")}
               />
             </div>
             <div className="mb-2">
@@ -85,7 +93,8 @@ const ModalNewPurchase = () => {
                 name="quantity"
                 id="quantity"
                 required
-                {...register("quantity", { required: true })}
+                placeholder={quantity}
+                {...register("quantity")}
               />
             </div>
             <div className="mb-2">
@@ -97,7 +106,8 @@ const ModalNewPurchase = () => {
                 name="price"
                 id="price"
                 required
-                {...register("price", { required: true })}
+                placeholder={price}
+                {...register("price")}
               />
             </div>
             <div className="mb-2">
@@ -108,7 +118,8 @@ const ModalNewPurchase = () => {
                 name="purchase_date"
                 id="purchase_date"
                 required
-                {...register("purchase_date", { required: true })}
+                placeholder={purchase_date}
+                {...register("purchase_date")}
               />
             </div>
             <div>
@@ -127,4 +138,4 @@ const ModalNewPurchase = () => {
   );
 };
 
-export default ModalNewPurchase;
+export default ModalModifyPurchase;

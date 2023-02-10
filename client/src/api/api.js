@@ -1,38 +1,40 @@
 import axios from "axios";
 
-const urlPurchases = 'http://localhost:8000/api/purchases'
-const getAllPurchases = async (urlPath, setState) => {
+const urlPurchases = "http://localhost:8000/api/purchases/";
+
+const getAllPurchases = async (urlPath, setPurchases, setSearchResults, setIsLoading) => {
   try {
     const response = await fetch(urlPath);
     const data = await response.json();
-    setState(data);
+    setPurchases(data);
+    setSearchResults(data)
+    setIsLoading(false)
   } catch (error) {
     console.log(error);
   }
 };
 
-const createPurchase = async (newPurchase) => {
-  console.log(newPurchase)
+const createPurchase = async (newPurchase) => {  
   axios
-    .post(urlPurchases , newPurchase)
+    .post(urlPurchases, newPurchase)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
 
-
-const deletePurchase = async (userId) => {
+const deletePurchase = async (purchaseId) => {
   axios
-    .delete(`http://localhost:7000/user/${userId}`)
+    .delete(`http://localhost:8000/api/purchases/${purchaseId}`)
     .then((res) => console.log(res))
-    .catch((err) => console.log(err)); 
-  window.location.reload();   
+    .catch((err) => console.log(err));
+
+  setTimeout(function () {
+    window.location.reload();
+  }, 3000);
 };
 
-
-
-const modifyPurchase = async (userId, data) => {  
- axios
-    .patch(`http://localhost:7000/user/${userId}`, data)
+const modifyPurchase = async (purchaseId, data) => {  
+  axios
+    .put(`http://localhost:8000/api/purchases/${purchaseId}`, data)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };

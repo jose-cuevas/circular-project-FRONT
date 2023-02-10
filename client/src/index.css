@@ -12,3 +12,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+img {
+  width:250px
+}
+
+.loading-sppiner {
+position: absolute;
+top: 65%;
+left: 50%;
+}
+
+.search-filter{
+  background-color: #f3f3f3;
+  padding: 1rem;
+  width: 25%;
+  border-color: #ccc;
+  margin:auto ;
+  margin-bottom: 3rem;
+}
