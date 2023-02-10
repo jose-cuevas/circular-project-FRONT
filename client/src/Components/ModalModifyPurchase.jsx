@@ -50,7 +50,7 @@ const ModalModifyPurchase = ({
     <>
       <Button variant="outline-primary" onClick={handleShow}>
         Edit
-      </Button>
+      </Button>      
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

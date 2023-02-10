@@ -20,7 +20,7 @@ const Purchases = () => {
   };
 
   if (!searchResults) setSearchResults(purchases.data);
-  console.log(isLoading);
+  
   return (
     <>      
       <div className="text-center">
@@ -34,14 +34,12 @@ const Purchases = () => {
       <SearchFilter />
 
       {isLoading && (
-          <div className="loading-sppiner">
-            {/* <h2 className="text-center mt-5 z-3">Loading...</h2> */}
+          <div className="loading-sppiner">            
             <Spinner animation="border" role="status" className="z-3 mt-3 text-center">
               <span className="visually-hidden">Loading...</span>
             </Spinner>
           </div>
         )}
-
 
       <Table striped hover>
         <thead>
@@ -51,6 +49,7 @@ const Purchases = () => {
             <th className="text-center p-3">Medicine</th>
             <th className="text-center p-3">Quantity</th>
             <th className="text-center p-3">Price</th>
+            <th className="text-center p-3">Date</th>
             <th className="text-center p-3"></th>
           </tr>
         </thead>        
@@ -68,11 +67,12 @@ const Purchases = () => {
           return (
             <tbody key={uniqid()}>
               <tr className=" border-bottom border-light">
-                <td className="w-auto p-3">{id}</td>
+                <td className="w-auto p-3 text-center">{id}</td>
                 <td className="w-auto p-3">{country}</td>
                 <td className="w-auto p-3">{medicine}</td>
                 <td className="w-auto p-3">{quantity}</td>
                 <td className="w-auto p-3">{price}</td>
+                <td className="w-auto p-3">{purchase_date}</td>
                 <td className="w-auto p-3 d-flex justify-content-center">
                   <Button
                     variant="outline-danger"
