@@ -19,7 +19,7 @@ const Purchases = () => {
     toast.error("Deleted purchase!");
   };
 
-  if (!searchResults) setSearchResults(purchases.data);
+  if (!searchResults) setSearchResults(purchases);
   
   return (
     <>      
