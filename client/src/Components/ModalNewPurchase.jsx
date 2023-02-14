@@ -15,10 +15,7 @@ const ModalNewPurchase = () => {
   const handleShow = () => setShow(true);
 
   // Form states
-  const {
-    register,
-    handleSubmit
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     const dataToSend = {
@@ -40,7 +37,11 @@ const ModalNewPurchase = () => {
     <>
       <Toaster />
       <div className="d-flex justify-content-center">
-        <Button variant="outline-primary" onClick={handleShow} className="mb-4 p-2 w-25">
+        <Button
+          variant="outline-primary"
+          onClick={handleShow}
+          className="mb-4 p-2 w-25"
+        >
           New Purchase
         </Button>
       </div>
@@ -53,7 +54,7 @@ const ModalNewPurchase = () => {
         <Modal.Body className="m-auto">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2">
-              <label for="country">Country:</label>
+              <label htmlFor="country">Country:</label>
               <br />
               <input
                 type="text"
@@ -65,7 +66,7 @@ const ModalNewPurchase = () => {
               />
             </div>
             <div className="mb-2">
-              <label for="medicine">Medicine:</label>
+              <label htmlFor="medicine">Medicine:</label>
               <br />
               <input
                 type="text"
@@ -77,7 +78,7 @@ const ModalNewPurchase = () => {
               />
             </div>
             <div className="mb-2">
-              <label for="quantity">Quantity:</label>
+              <label htmlFor="quantity">Quantity:</label>
               <br />
               <input
                 type="number"
@@ -89,7 +90,7 @@ const ModalNewPurchase = () => {
               />
             </div>
             <div className="mb-2">
-              <label for="price">Price:</label>
+              <label htmlFor="price">Price:</label>
               <br />
               <input
                 type="number"
@@ -101,7 +102,7 @@ const ModalNewPurchase = () => {
               />
             </div>
             <div className="mb-2">
-              <label for="price">Date:</label>
+              <label htmlFor="price">Date:</label>
               <br />
               <input
                 type="date"

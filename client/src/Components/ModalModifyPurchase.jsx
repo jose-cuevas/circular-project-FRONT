@@ -59,7 +59,7 @@ const ModalModifyPurchase = ({
         <Modal.Body className="m-auto">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2">
-              <label for="country">Country:</label>
+              <label htmlFor="country">Country:</label>
               <br />
               <input
                 type="text"
@@ -72,7 +72,7 @@ const ModalModifyPurchase = ({
               />
             </div>
             <div className="mb-2">
-              <label for="medicine">Medicine:</label>
+              <label htmlFor="medicine">Medicine:</label>
               <br />
               <input
                 type="text"
@@ -85,7 +85,7 @@ const ModalModifyPurchase = ({
               />
             </div>
             <div className="mb-2">
-              <label for="quantity">Quantity:</label>
+              <label htmlFor="quantity">Quantity:</label>
               <br />
               <input
                 type="number"
@@ -98,7 +98,7 @@ const ModalModifyPurchase = ({
               />
             </div>
             <div className="mb-2">
-              <label for="price">Price:</label>
+              <label htmlFor="price">Price:</label>
               <br />
               <input
                 type="number"
@@ -111,7 +111,7 @@ const ModalModifyPurchase = ({
               />
             </div>
             <div className="mb-2">
-              <label for="price">Date:</label>
+              <label htmlFor="price">Date:</label>
               <br />
               <input
                 type="date"

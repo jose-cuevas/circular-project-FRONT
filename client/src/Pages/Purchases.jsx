@@ -65,7 +65,7 @@ const Purchases = () => {
           } = product;
 
           return (
-            <tbody key={uniqid()}>
+            <tbody key={id}>
               <tr className=" border-bottom border-light">
                 <td className="w-auto p-3 text-center">{id}</td>
                 <td className="w-auto p-3">{country}</td>
