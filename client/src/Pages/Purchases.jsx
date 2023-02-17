@@ -9,20 +9,21 @@ import { PurchaseContext } from "../context/PurchaseContext";
 import { deletePurchase, modifyPurchase } from "../api/api";
 import ModalNewPurchase from "../Components/ModalNewPurchase";
 import ModalModifyPurchase from "../Components/ModalModifyPurchase";
+import ModalDeletePurchase from "../Components/ModalDeletePurchase";
 import SearchFilter from "../Components/SearchFilter";
 import logo from "../img/logo-circular.svg";
 
 const Purchases = () => {
   const { purchases, searchResults, setSearchResults, isLoading } =
     useContext(PurchaseContext);
-  const deleteAlert = () => {
-    toast.error("Deleted purchase!");
-  };
+  // const deleteAlert = () => {
+  //   toast.error("Deleted purchase!");
+  // };
 
   if (!searchResults) setSearchResults(purchases);
-  
+
   return (
-    <>      
+    <>
       <div className="text-center">
         <img src={logo} alt="logo-circular-lab" className="text-center mt-3" />
         <h2 className="text-center my-5 mx-auto">
@@ -34,12 +35,16 @@ const Purchases = () => {
       <SearchFilter />
 
       {isLoading && (
-          <div className="loading-sppiner">            
-            <Spinner animation="border" role="status" className="z-3 mt-3 text-center">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
-        )}
+        <div className="loading-sppiner">
+          <Spinner
+            animation="border"
+            role="status"
+            className="z-3 mt-3 text-center"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      )}
 
       <Table striped hover>
         <thead>
@@ -52,7 +57,7 @@ const Purchases = () => {
             <th className="text-center p-3">Date</th>
             <th className="text-center p-3"></th>
           </tr>
-        </thead>        
+        </thead>
         {searchResults?.map((product) => {
           const {
             id,
@@ -73,17 +78,10 @@ const Purchases = () => {
                 <td className="w-auto p-3">{quantity}</td>
                 <td className="w-auto p-3">{price}</td>
                 <td className="w-auto p-3">{purchase_date}</td>
-                <td className="w-auto p-3 d-flex justify-content-center">
-                  <Button
-                    variant="outline-danger"
-                    className="me-3"
-                    onClick={() => {
-                      deleteAlert();
-                      deletePurchase(id);
-                    }}
-                  >
-                    Delete
-                  </Button>
+                <td className="w-auto p-3 text-center">
+
+                  <ModalDeletePurchase id={id}/>
+
                   <ModalModifyPurchase
                     id={id}
                     country={country}
